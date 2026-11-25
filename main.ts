@@ -38,6 +38,12 @@ export function findProblems(line: string): string[] {
   if (/[\u0000-\u001f\u007f]/.test(line)) {
     problems.push('line contains a control character');
   }
+  if (/  /.test(line)) {
+    problems.push('line contains a double space');
+  }
+  if (!/[.!?]$/.test(line)) {
+    problems.push('line does not end with terminal punctuation');
+  }
   if (!/[A-Za-z]/.test(line)) {
     problems.push('line contains no letter');
   }
